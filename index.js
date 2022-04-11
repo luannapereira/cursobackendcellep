@@ -1,22 +1,19 @@
 // npm init
-// git init
 // npm install express
 // npm install -g nodemon
 // npm install ejs
 
 const app = require ('./config/server')
+const noticias = require('./mockup')
 
-// rota home
 app.get('/', function(req, res){
     res.render('home/index')
 })
 
-// rota notícias
 app.get('/noticias', function(req, res){
-    res.render('news/noticias')
+    res.render('news/noticias' , {noticias: noticias})
 })
 
-// rota admin
 app.get('/admin' , function(req, res){
     res.render('admin/form_add_noticia')
 })
