@@ -7,11 +7,16 @@ const app = require ('./config/server')
 const noticias = require('./mockup')
 
 app.get('/', function(req, res){
-    res.render('home/index')
+    res.render('home/index', {noticias: noticias.slice(0,3)})
 })
 
 app.get('/noticias', function(req, res){
     res.render('news/noticias' , {noticias: noticias})
+})
+
+app.get('/noticia', function(req, res){
+    const id = req.query.id
+    res.render('news/noticia', { noticia: noticias[id] })
 })
 
 app.get('/admin' , function(req, res){
